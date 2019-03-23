@@ -1,0 +1,17 @@
+.homeList {
+    width: 100%;
+}
+.home {
+    width: 80%;
+    margin: 0 auto;
+    background: rgb(175, 231, 173);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.homePhoto {
+    width: 50%;
+    margin: 0 auto;
+}
+.homePhoto img {
+    width: 100%;
+}
