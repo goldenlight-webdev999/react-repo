@@ -1,0 +1,135 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Timer</title>
+    <!-- Script tags including React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="timeline.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+    <div class="demo" id="app"></div>    
+    <script type="text/babel">
+
+        class App extends React.Component {
+                    render() {
+                    return (
+                    <div className="notificationsFrame">
+                    <div className="panel">                        
+                        <Header title="Timer" />
+                        <Clock />
+                    </div>
+                    </div>
+                    )
+                    }
+                }
+
+        class Header extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                searchVisible: false
+                }
+            }
+
+            // toggle visibility when run on the state
+            showSearch() {
+                this.setState({
+                    searchVisible: !this.state.searchVisible
+                })
+            }
+
+            render() {
+                // Classes to add to the <input /> element
+                let searchInputClasses = ["searchInput"];
+
+                // Update the class array if the state is visible
+                if (this.state.searchVisible) {
+                searchInputClasses.push("active");
+                }
+
+                return (
+                <div className="header">
+                    <div className="fa fa-more"></div>
+
+                    <span className="title">
+                    {this.props.title}
+                    </span>
+
+                    <input
+                    type="text"
+                    className={searchInputClasses.join(' ')}
+                    placeholder="Search ..." />
+
+                    {/* Adding an onClick handler to call the showSearch button */}
+                    <div
+                    onClick={this.showSearch.bind(this)}
+                    className="fa fa-search searchIcon"></div>
+                </div>
+                )
+            }
+        }
+       class Clock extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = this.getTime();
+            }
+
+            componentDidMount() {
+                this.setTimer();
+            }
+
+            componentWillUnmount() {
+                if (this.timeout) {
+                    clearTimeout(this.timeout);
+                }
+            }
+
+            setTimer() {
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(this.updateClock.bind(this), 1000);
+            }
+
+            updateClock() {
+            this.setState(this.getTime, this.setTimer);
+            }
+
+            getTime() {
+                const currentTime = new Date();
+                return {
+                    hours: currentTime.getHours(),
+                    minutes: currentTime.getMinutes(),
+                    seconds: currentTime.getSeconds(),
+                    ampm: currentTime.getHours() >= 12 ? 'pm' : 'am'
+                }
+            }
+
+            render() {
+                const {hours, minutes, seconds, ampm} = this.state;
+                return (
+                    <div className="clock">
+                    {
+                        hours == 0 ? 12 :
+                        (hours > 12) ?
+                            hours - 12 : hours
+                    }:{
+                        minutes > 9 ? minutes : `0${minutes}`
+                    }:{
+                        seconds > 9 ? seconds : `0${seconds}`
+                    } {ampm}
+                    </div>
+                )
+            }
+        }
+
+        //export default Clock
+
+        var mount = document.querySelector('#app');
+        ReactDOM.render(<App />, mount);        
+    </script>
+</body>
+</html>
