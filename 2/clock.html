@@ -48,7 +48,7 @@
 
                 // Update the class array if the state is visible
                 if (this.state.searchVisible) {
-                searchInputClasses.push("active");
+                    searchInputClasses.push("active");
                 }
 
                 return (
@@ -56,18 +56,13 @@
                     <div className="fa fa-more"></div>
 
                     <span className="title">
-                    {this.props.title}
+                        {this.props.title}
                     </span>
 
-                    <input
-                    type="text"
-                    className={searchInputClasses.join(' ')}
-                    placeholder="Search ..." />
+                    <input type="text" className={searchInputClasses.join(' ')} placeholder="Search ..." />
 
                     {/* Adding an onClick handler to call the showSearch button */}
-                    <div
-                    onClick={this.showSearch.bind(this)}
-                    className="fa fa-search searchIcon"></div>
+                    <div onClick={this.showSearch.bind(this)} className="fa fa-search searchIcon"></div>
                 </div>
                 )
             }
@@ -95,7 +90,7 @@
             }
 
             updateClock() {
-            this.setState(this.getTime, this.setTimer);
+                this.setState(this.getTime, this.setTimer);                
             }
 
             getTime() {
