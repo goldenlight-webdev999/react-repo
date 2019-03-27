@@ -14,15 +14,15 @@
     <script type="text/babel">
         class App extends React.Component {
             render() {
-            return (
-            <div className="notificationsFrame">
-            <div className="panel">
-                <Header title="Timeline" />
-                <Header title="ABC" />
-                <Content activities={activities} />
-            </div>
-            </div>
-            )
+                return (
+                <div className="notificationsFrame">
+                    <div className="panel">
+                        <Header title="Timeline" />
+                        <Header title="ABC" />
+                        <Content activities={activities} />
+                    </div>
+                </div>
+                )
             }
         }
 
@@ -51,13 +51,10 @@
             render() {
                 return (
                     <div className="header">
-                    <div className="fa fa-more"></div>
-                    <span className="title">{this.props.title}</span>
-                    <input
-                    type="text"
-                    className="searchInput"
-                    placeholder="Search ..." />
-                    <div className="fa fa-search searchIcon"></div>
+                        <div className="fa fa-more"></div>
+                        <span className="title">{this.props.title}</span>
+                        <input type="text" className="searchInput" placeholder="Search ..." />
+                        <div className="fa fa-search searchIcon"></div>
                     </div>
                 )
             }
@@ -68,12 +65,11 @@
                 const {activities} = this.props; // ES6 destructuring
                 return (
                     <div className="content">
-                    <div className="line"></div>
-                    {/* Timeline item */}
-                    {activities.map((activity) => (
-                    <ActivityItem
-                    activity={activity} />
-                    ))}
+                        <div className="line"></div>
+                        {/* Timeline item */}
+                        {activities.map((activity) => (
+                            <ActivityItem activity={activity} />
+                        ))}
                     </div>
                 )
             }
@@ -84,24 +80,21 @@
                 const {activity} = this.props; // ES6 destructuring
                 return (
                     <div className="item">
-                    <div className="avatar">
-                    <img
-                    alt={activity.text}
-                    src={activity.user.avatar} />
-                    {activity.user.name}
-                    </div>
-                    <span className="time">
-                    {activity.timestamp}
-                    </span>
-                    <p>{activity.text}</p>
-                    <div className="commentCount">
-                    {activity.comments.length}
-                    </div>
+                        <div className="avatar">
+                            <img alt={activity.text} src={activity.user.avatar} />
+                            {activity.user.name}
+                        </div>
+                        <span className="time">
+                            {activity.timestamp}
+                        </span>
+                        <p>{activity.text}</p>
+                        <div className="commentCount">
+                            {activity.comments.length}
+                        </div>
                     </div>
                 )
             }
         }
-
 
         var mount = document.querySelector('#app');
         ReactDOM.render(<App />, mount);        

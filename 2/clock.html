@@ -11,18 +11,19 @@
 </head>
 <body>
     <div class="demo" id="app"></div>    
+    
     <script type="text/babel">
 
         class App extends React.Component {
                     render() {
-                    return (
-                    <div className="notificationsFrame">
-                    <div className="panel">                        
-                        <Header title="Timer" />
-                        <Clock />
-                    </div>
-                    </div>
-                    )
+                        return (
+                        <div className="notificationsFrame">
+                        <div className="panel">                        
+                            <Header title="Timer" />
+                            <Clock />
+                        </div>
+                        </div>
+                        )
                     }
                 }
 
@@ -54,13 +55,10 @@
                 return (
                 <div className="header">
                     <div className="fa fa-more"></div>
-
                     <span className="title">
                         {this.props.title}
                     </span>
-
                     <input type="text" className={searchInputClasses.join(' ')} placeholder="Search ..." />
-
                     {/* Adding an onClick handler to call the showSearch button */}
                     <div onClick={this.showSearch.bind(this)} className="fa fa-search searchIcon"></div>
                 </div>
@@ -107,15 +105,15 @@
                 const {hours, minutes, seconds, ampm} = this.state;
                 return (
                     <div className="clock">
-                    {
-                        hours == 0 ? 12 :
-                        (hours > 12) ?
-                            hours - 12 : hours
-                    }:{
-                        minutes > 9 ? minutes : `0${minutes}`
-                    }:{
-                        seconds > 9 ? seconds : `0${seconds}`
-                    } {ampm}
+                        {
+                            hours == 0 ? 12 :
+                            (hours > 12) ?
+                                hours - 12 : hours
+                        }:{
+                            minutes > 9 ? minutes : `0${minutes}`
+                        }:{
+                            seconds > 9 ? seconds : `0${seconds}`
+                        } {ampm}
                     </div>
                 )
             }
